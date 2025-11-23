@@ -3,12 +3,17 @@ insert into 테이블명(컬럼1, 컬럼2, 컬럼3) values(데이터1, 데이터
 --문자열은 일반적으로 작은따옴표 사용
 insert into author(id, name, email) values(4, 'hongildong4', 'hongildong4@naver.com');
 
---update : 테이블에 데이터를 변경
+--update : 테이블에 데이터를 변경(where 조건 꼭 써야함)
 update author set name='홍길동', email='hong100@naver.com' where id=3;
 
---delete : 데이터 삭제
+--delete : 데이터 삭제(where 조건 꼭 넣어야함)
 delete from 테이블명 where 조건;
 delete from author where id=4;
+
+--회원가입 -> insert 발생
+--회원정보수정 -> update 발생
+--회원탈퇴 -> delete -> 현실에서는 update처리
+--soft delete, hard delete
 
 --select : 조회********* 
 select 컬럼1, 컬럼2 from 테이블명;
@@ -23,7 +28,7 @@ select * from author where name = '홍길동';
 select * from author where id>2 and name='홍길동';
 select * from author where id in (1,3,5);
 --이름 홍길동인 글쓴이가 쓴 글 목록을 조회하시오
-select * from author where id in(select id from author where name='홍길동');
+select * from post where author_id in(select id from author where name='홍길동');
 
 --중복제거 조회: distinct
 select name from author;
@@ -50,4 +55,4 @@ select a.name, a.email from author a;
 select * from author where password is null;
 select * from author where password is not null;
 
--- 프로그래머스 sql문제풀이
+-- 프로그래머스 sql문제풀이(여러기준으로 정렬하기,상위 n개 레코드)

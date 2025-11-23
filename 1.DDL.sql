@@ -47,7 +47,8 @@ create table posts(id int , title varchar(255), contents varchar(255), author_id
 select * from information_schema.key_column_usage where table_name='posts';
 
 --테이블 index 조회
---index: ahrck -> 중요한 데이터를 대상 -> pk, fk -> index 생성
+--index: ahrck -> 중요한 데이터를 대상 
+--pk, fk, unique => index 생성(중요한 컬럼에 대해서 목차페이지 생성)
 show index from 테이블명;
 
 --alter: 테이블의 구조를 변경
@@ -60,10 +61,10 @@ alter table author add column age int;
 --테이블의 컬럼 삭제
 alter table post drop column age;
 
---테이블의 컬럼명 변경(change 사용)
+--테이블의 컬럼명 변경(change 사용)*
 alter table post change column contents content varchar(255);
 
---테이블 컬럼의 타입과 제약조건 변경(modify 사용)
+--테이블 컬럼의 타입과 제약조건 변경(modify 사용)*
 alter table post modify column content varchar(3000);
 alter table author modify column email varchar(255) not null unique;
 --pk는 not null unique 맞음
