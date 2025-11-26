@@ -11,7 +11,7 @@ alter table author modify column id bigint;
 alter table post modify column author_id bigint;
 alter table post modify column id bigint;
 
---decimal(총자리수, 소수부자리수)
+--decimal(총자리수, 소수부자리수)- 고정소수점(오차 x)
 alter table author add column height decimal(4,1); --ex)175.5라면
 --정상적으로 insert
 insert into author(id,name,email,height) values(7,'홍길동3','sss@naver.com',175.5);
@@ -68,7 +68,7 @@ select cast(20251121 as date);---2025-11-21
 --문자 -> 날짜
 select cast('20251121'as date);--2025-11-21
 
---날짜타입변환 - date_format(Y,m,d,H,i,s)-- 연월일시분초
+--날짜타입변환 - sormat(Y,m,d,H,i,s)-- 연월일시분초
 select date_format(created_time, '%Y-%m-%d') from post;
 select date_format(created_time, '%H-%i-%s') from post;
 select * from post where date_format(created_time, '%Y') = "2025";
