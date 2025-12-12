@@ -32,7 +32,7 @@ alter table post add constraint post_fk foreign key(author_id)references author(
 
 --foregin key: 부모테이블에 없는 데이터가 자식테이블에 insert 될수없다.
 --옵션
---1)on delete: 기본값 -> restrict(삭제 안됨),cascade,set null
+--1)on delete: 기본값 -> restrict,cascade,set null
 --2)on update: 기본값 -> restrict, cascade, set null
 
 --default 옵션

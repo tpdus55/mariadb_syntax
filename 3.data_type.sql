@@ -1,4 +1,4 @@
---tinyint: 1바이트 사용. -128~127 까지의 정수표현 가능 (unsigned시에 표현 범위가 0~255)-> 이거는 음 안쓰겠다는 뜻
+--tinyint: 1바이트 사용. -128~127 까지의 정수표현 가능 (unsigned시에 표현 범위가 0~255)-> 이거는 음수 안쓰겠다는 뜻
 --author테이블에 age 컬럼추가
 alter table author add column age tinyint unsigned; 
 insert into author(id,name,email,age) values(6,'홍길동2','aa@naver.com',200);
@@ -68,7 +68,7 @@ select cast(20251121 as date);---2025-11-21
 --문자 -> 날짜
 select cast('20251121'as date);--2025-11-21
 
---날짜타입변환 - sormat(Y,m,d,H,i,s)-- 연월일시분초
+--날짜타입변환 - format(Y,m,d,H,i,s)-- 연월일시분초
 select date_format(created_time, '%Y-%m-%d') from post;
 select date_format(created_time, '%H-%i-%s') from post;
 select * from post where date_format(created_time, '%Y') = "2025";

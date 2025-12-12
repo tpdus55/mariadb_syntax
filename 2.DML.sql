@@ -39,7 +39,7 @@ select distinct name from author;
 --아무런 정렬조건 없이 조회할 경우에는 pk기준 오름차순
 select * from author order by name desc;
 
---멀티컬러 order by : 여러컬럼으로 정렬 시에, 먼저 쓴 컬럼 우선정렬하고, 중복시 그 다음 컬럼으로 정렬적용
+--멀티컬럼 order by : 여러컬럼으로 정렬 시에, 먼저 쓴 컬럼 우선정렬하고, 중복시 그 다음 컬럼으로 정렬적용
 select * from author order by name desc, email asc;
 
 --결과값 개수 제한

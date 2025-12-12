@@ -20,7 +20,7 @@ select*from author a left join post p on a.id = p.author_id;
 select*from post p left join author a on p.author_id = a.id;    --on 뒤에 순서 상관없음
 
 --select from join on where 조건 order by 
---셀프조인왜그래요
+--셀프조인왜그래요**************
 
 --실습) 글쓴이가 있는 글 중에서 글의 제목과 저자의 이메일, 저자의 나이까지 출력하되, 저자의 나이가 30세 이상인 글만 출력
 select p.title, a.email, a.age from post p inner join author a on a.id = p.author_id where a.age>=30;
@@ -45,10 +45,10 @@ select name, email from author union all select title, contents from post;
 
 --서브쿼리: select문 안에 또다른 select문을 서브쿼리라고 함.
 --join으로 대체가능, 아주 복잡한 쿼리에 서브쿼리 많이 사용.
---where절 안에 서브쿼리(제일 많이 씀)
+--where절 안에 서브쿼리(제일 많이 씀)******
 --한번이라도 글을 쓴 author의 목록 조회(중복제거)
 select distinct a.* from author a inner join post p on a.id=p.author_id;
---null값은 in조건절에서 자동으로 제외 
+--null값은 in조건절에서 자동으로 제외* 
 select * from author where id in (select author_id from post);    
 --컬럼 위치에 서브쿼리
 --회원 별로 본인의 쓴 글의 개수를 출력 ex) email,글 개수
@@ -57,14 +57,14 @@ select email, (select count(*)from post p where p.author_id=a.id ) as post_count
 --from절 위치에 서브쿼리
 select a.* from (select*from author)as a;
 
---group by 컬럼명 : 특정 컬럼으로 데이터를 그룹화하여, 하나의 행(row)처럼 취급
+--group by 컬럼명*** : 특정 컬럼으로 데이터를 그룹화하여, 하나의 행(row)처럼 취급
 select author_id from post group by author_id;
 select author_id, count(*) from post group by author_id;
 
 --회원별로 본인의 쓴 글의 개수를 출력 ex) email, post_count (left join으로 풀이)
 select a.email, count(p.id) from author a left join post p on a.id = p.author_id group by a.email; 
 
---집계함수
+--집계함수**
 select count(*) from author;
 select sum(age) from author;
 select avg(age) from author;
@@ -79,7 +79,7 @@ select name,count(*) as count ,avg(age) as age from author group by name;
 --날짜값이 null인 데이터는 제외하고, 날짜별 post글의 개수를 출력
 select date_format(created_time,'%Y-%m-%d'),count(*) from post where created_time is not null group by date_format(created_time,'%Y-%m-%d');
 
---group by와 having
+--group by와 having**
 --having은 group by를 통해 나온 집계값에 대한 조건****
 --having은 group by 된 데이터의 조건임******
 --글을 3번 이상 쓴 사람  author_ID찾기

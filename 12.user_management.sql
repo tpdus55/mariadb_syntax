@@ -1,0 +1,20 @@
+--사용자 목록조회
+select*from mysql.user;
+
+--사용자 생성
+create user 'marketing'@'%' identified by 'test4321';
+
+--사용자에게 권한부여(root 계정으로 들어와야함)
+grant select on board.author to 'marketing'@'%';
+grant select,insert on board.* to 'marketing'@'%';
+grant all privileges on board.* to 'marketing'@'%';
+
+
+--사용자 권한회수
+revoke select on board.author from 'marketing'@'%';
+
+--사용자 권한조회
+show grants for 'marketing'@'%';
+
+--사용자 계정삭제
+drop user 'marketing'@'%';

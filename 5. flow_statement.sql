@@ -9,7 +9,7 @@ select id, ifnull(name is null, '익명사용자', name) as name from author;
 select id, 
 case
  when name is null then '익명사용자'
- when name = 'hon1' then '홍길동1'
+ when name = 'hon1' then '홍길동1'  --name이 hon1이면 홍길동으로 바꿔서 출력
  when name = 'hon2' then '홍길동2'
  else name
  end as name
